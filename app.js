@@ -1,5 +1,5 @@
 // MODULE
-var angularApp = angular.module('angularApp', []);
+var angularApp = angular.module('angularApp', ['ngMessages', 'ngResource']);
 
 // CONTROLLERS
 angularApp.controller('mainController', [
