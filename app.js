@@ -1,55 +1,22 @@
 // MODULE
-var angularApp = angular.module('angularApp', [
-	'ngMessages',
-	'ngResource',
-	'ngRoute',
-]);
-//Routing
-angularApp.config(function ($routeProvider) {
+var weatherApp = angular.module('weatherApp', ['ngRoute', 'ngResource']);
+
+// ROUTES
+weatherApp.config(function ($routeProvider) {
 	$routeProvider
 
 		.when('/', {
-			templateUrl: 'pages/main.html',
-			controller: 'firstController',
+			templateUrl: 'pages/home.htm',
+			controller: 'homeController',
 		})
 
-		.when('/second', {
-			templateUrl: 'pages/second.html',
-			controller: 'secondController',
+		.when('/forecast', {
+			templateUrl: 'pages/forecast.htm',
+			controller: 'forecastController',
 		});
 });
 
 // CONTROLLERS
-angularApp.controller('firstController', [
-	'$scope',
-	'$filter',
-	function ($scope, $filter) {
-		$scope.name = ' First';
-	},
-]);
+weatherApp.controller('homeController', ['$scope', function ($scope) {}]);
 
-angularApp.controller('secondController', [
-	'$scope',
-	'$filter',
-	function ($scope, $filter) {
-		$scope.name = ' Second';
-	},
-]);
-angularApp.controller('mainController', [
-	'$scope',
-	'$filter',
-	function ($scope, $filter) {
-		$scope.lowerCaseHandle = () => {
-			return $filter('lowercase')($scope.handle);
-		};
-	},
-]);
-
-angularApp.controller('LogController', [
-	'$scope',
-	'$log',
-	($scope, $log) => {
-		$scope.$log = $log;
-		$scope.message = 'Hello World!';
-	},
-]);
+weatherApp.controller('forecastController', ['$scope', function ($scope) {}]);
